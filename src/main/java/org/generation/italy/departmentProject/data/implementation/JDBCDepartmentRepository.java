@@ -35,22 +35,15 @@ public class JDBCDepartmentRepository implements DepartmentRepository {
 
     @Override
     public void deleteDepartment(Department department) throws DataException, EntityNotFoundException {
-
-    }
-
-    @Override
-    public void deleteDepartmentById (Long id) throws DataException, EntityNotFoundException {
         try(
                 PreparedStatement st = con.prepareStatement("Delete_Department")
         ){
-           st.setLong(1,id);
-           int rs = st.executeUpdate();
+            st.setLong(1,id);
+            int rs = st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
-
     @Override
     public Department findByNameDepartment(String departmentNamePart) throws DataException {
         return null;
